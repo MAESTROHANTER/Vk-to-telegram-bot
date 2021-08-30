@@ -40,13 +40,16 @@ setTimeout(() => {
 			if (msg_arr.includes(msgid)) { msgid++ } else {
 				if (document.querySelectorAll('div[class="im-mess--text wall_module _im_log_body"]')[msgid]) {
 					msg_arr.push(msgid)
-					if (document.querySelectorAll('div[class="im-mess--text wall_module _im_log_body"]')[msgid].firstElementChild == "a") { // If msg contain any links
-						if (document.querySelectorAll('div[class="im-mess--text wall_module _im_log_body"]')[msgid].firstElementChild.getAttribute("title") == null) {} 
-						var message = document.querySelectorAll('div[class="im-mess--text wall_module _im_log_body"]')[msgid].firstElementChild.getAttribute("title")
-					} else { 
+					if (document.querySelectorAll('div[class="im-mess--text wall_module _im_log_body"]')[msgid].childElementCount > 1) {
+						try {
+							var message = document.querySelectorAll('div[class="im-mess--text wall_module _im_log_body"]')[msgid].firstElementChild.getAttribute("title")
+						} catch (err) {
+							var message = document.querySelectorAll('div[class="im-mess--text wall_module _im_log_body"]')[msgid].firstElementChild.getAttribute("onclick")
+						} 
+					} else {
 						var message = document.querySelectorAll('div[class="im-mess--text wall_module _im_log_body"]')[msgid].innerText
 					}
-
+					
 					if (message == "") {} else {
 						var message = encodeURIComponent(message);
 						let request1 = new XMLHttpRequest();
