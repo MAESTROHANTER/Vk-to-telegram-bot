@@ -1,7 +1,7 @@
 // Your data here
 
-var tg_token = '613008844:AAFQuIhKwJBnrFrf9e2phT3D37c3P2t4Z2A' // Telegram bot API
-var tg_chat_id = '-1001562294952' // Telegram chat id
+var tg_token = 'Ваш:токен' // Telegram bot API
+var tg_chat_id = '-Вашчатid' // Telegram chat id
 var interval = 1000 // Check new message every [interval] ms
 var msg_buffer = 250 // Buffer for messages. Lower buffer = lower pc usage
 let msg_arr = []
