@@ -41,17 +41,20 @@ setTimeout(() => {
 				if (document.querySelectorAll('div[class="im-mess--text wall_module _im_log_body"]')[msgid]) {
 					msg_arr.push(msgid)
 					if (document.querySelectorAll('div[class="im-mess--text wall_module _im_log_body"]')[msgid].childElementCount > 1) {
-						try {
-							message = document.querySelectorAll('div[class="im-mess--text wall_module _im_log_body"]')[msgid].firstElementChild.getAttribute("title")
-						} catch (err) {}
-						try {
-							message = document.querySelectorAll('div[class="im-mess--text wall_module _im_log_body"]')[msgid].firstElementChild.getAttribute("onclick")
-						} catch (err) {}
+							if (document.querySelectorAll('div[class="im-mess--text wall_module _im_log_body"]')[msgid].firstElementChild.getAttribute("title")) {
+								message = document.querySelectorAll('div[class="im-mess--text wall_module _im_log_body"]')[msgid].firstElementChild.getAttribute("title")
+							} else {
+								message = document.querySelectorAll('div[class="im-mess--text wall_module _im_log_body"]')[msgid].firstElementChild.getAttribute("onclick")
+								message = message.replace("return goAway('", "")
+								message = message.replace("', {}, event);", "")
+							}
 					} else {
 						message = document.querySelectorAll('div[class="im-mess--text wall_module _im_log_body"]')[msgid].innerText
 					}
 					
-					if (message == "") {} else {
+					if (message == "") {} 
+					else if (message == null) {} 
+					else {
 						message = encodeURIComponent(message);
 						let request1 = new XMLHttpRequest();
 						request1.open("GET", "https://api.telegram.org/bot"+ tg_token +"/sendMessage?chat_id="+ tg_chat_id +"&text="+ message +"&parse_mode=Markdown", true);
