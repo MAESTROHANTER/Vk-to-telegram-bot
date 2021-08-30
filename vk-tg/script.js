@@ -1,6 +1,6 @@
 // Your data here
 
-var tg_token = 'Ваш:токен' // Telegram bot API
+var tg_token = 'Ваш:токен' // Telegram bot token
 var tg_chat_id = '-Вашчатid' // Telegram chat id
 var interval = 1000 // Check new message every [interval] ms
 var msg_buffer = 250 // Buffer for messages. Lower buffer = lower pc usage
@@ -61,5 +61,5 @@ setTimeout(() => {
 }, 5000);
 
 } catch (err) { 
-	console.log('Ошибка! Для корректной работы зайдите в диалог заполните необходимые данные');
+	console.log('Ошибка! Для корректной работы зайдите в диалог и заполните необходимые данные');
 }
