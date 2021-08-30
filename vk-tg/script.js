@@ -4,12 +4,15 @@ var tg_token = 'Ваш:токен' // Telegram bot token
 var tg_chat_id = '-Вашчатid' // Telegram chat id
 var interval = 1000 // Check new message every [interval] ms
 var msg_buffer = 250 // Buffer for messages. Lower buffer = lower pc usage
-let msg_arr = []
 
 //Start here
-try {
-	
+
+let msg_arr = []	
 var msgid = document.querySelectorAll('div[class="im-mess--text wall_module _im_log_body"]').length - 1 // Last message on page - dont change :)
+if (msgid == 0) { 
+	console.log('Для корректной работы зайдите в диалог и заполните необходимые данные');
+	fail;
+}
 
 setTimeout(() => {
 	
@@ -59,7 +62,3 @@ setTimeout(() => {
 		}, interval);
 	};
 }, 5000);
-
-} catch (err) { 
-	console.log('Ошибка! Для корректной работы зайдите в диалог и заполните необходимые данные');
-}
