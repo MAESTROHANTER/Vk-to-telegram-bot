@@ -1,0 +1,22 @@
+{
+    "manifest_version": 2,
+    "name": "vk-tg",
+	"description": "Расширение пересылает сообщения из активной страницы диалога Вконтакте в чат Телеграм",
+    "version": "1.0",
+	"author": "https://t.me/LLIepuqp",
+	
+	"icons": 	
+	{ 	
+		"16": "16.png", // Author: http://froyoshark.deviantart.com
+		"48": "48.png", // Author: http://froyoshark.deviantart.com
+		"128": "128.png" // Author: http://froyoshark.deviantart.com
+	},
+    
+    "content_scripts": [
+        {
+            "matches": ["https://vk.com/im*"],
+            "js": ["script.js"]
+        }
+    ]
+   
+}
